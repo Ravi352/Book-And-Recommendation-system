@@ -1,0 +1,8 @@
+transformers==4.31.0
+torch==2.0.1
+fastapi==0.95.1
+uvicorn==0.22.0
+langchain
+langchain-ollama
+streamlit
+langchain_experimental
