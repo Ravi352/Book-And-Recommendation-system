@@ -105,7 +105,7 @@ After push the code to the deployment server and run the fast api server.
 
 ## Usage
 
-Open the terminal and create virtual environment. install all the dependencies in the server. Run "uvicorn API:app --reload" so that the fast api server will start and all the APIs can be tested.
+Open the terminal and create virtual environment. install all the dependencies in the server. Run "uvicorn APIs:app --reload" so that the fast api server will start and all the APIs can be tested.
 To check if the all APIs are working correctly "test.py" file is given in the code. It can easily test all the APIs endpoints and database interaction. 
 
 One authenication will be required to every api for the authenticity, which is a basic authentication and can be set user:"user_name", password:"Password". if you are using postman for checking the apis go to authentication in the postman and fill the username and password after that only you can access the APIs.
