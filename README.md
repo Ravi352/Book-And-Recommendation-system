@@ -23,7 +23,7 @@ Create a tables on the database with the queries .sql files from the data given 
 Install the Ollama3 model from the official website "https://ollama.com/". Take the model and install in the system, after installing it pull the the model into the your virtual environment. The model interaction and integration with langchain is implmented in the model_inference.py file. The logger is set to track all the logs (model_interaction.logs) of the model interations with time taken by the model for the given query.
 
 Generating book and review summeries: You have to the topic of the book and it will generate top 5 books and its review summary.
-endpoint: POST "http://127.0.0.1:8000/generate_book_and_review"
+#### POST "http://127.0.0.1:8000/generate_book_and_review"
 body: {
         "text":"Science Fiction"
     }
@@ -31,7 +31,7 @@ body: {
 To Use this endpoint You will be needed authentication the credentials you can get from the "authenticate_user" function in the APIs.py. 
 
 Generate summaries for new book entries and review summaries.
-Endpoint: POST "http://127.0.0.1:8000/new_book_summary"
+#### POST "http://127.0.0.1:8000/new_book_summary"
 
 body:  {
           "title": "Justice League",
