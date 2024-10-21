@@ -99,7 +99,7 @@ SQLAlchemy is used to interact with the postgresql so that it can handle multipl
 
 ## Cloud Deployment 
 
-changes are needed in the PostgreSql, change the local host to the server in which the deployment shoud be done. Stabilish a secure connection with APIs by changing the domain from local to the instance.
+changes are needed in the PostgreSql, change the local host to the server in which the deployment shoud be done. Stabilish a secure connection with APIs by changing the domain from local to the instance and the running port.
 After push the code to the deployment server and run the fast api server.
 
 
