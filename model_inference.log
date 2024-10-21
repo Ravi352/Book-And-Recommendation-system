@@ -67,3 +67,862 @@
 2024-10-20 17:59:52,690 - INFO - Invoking model for summary and review...
 2024-10-20 17:59:56,402 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
 2024-10-20 18:00:15,446 - INFO - Time taken for model inference: 22.7556 seconds
+2024-10-21 17:25:33,393 - INFO - select pg_catalog.version()
+2024-10-21 17:25:33,398 - INFO - [raw sql] ()
+2024-10-21 17:25:33,398 - INFO - select current_schema()
+2024-10-21 17:25:33,398 - INFO - [raw sql] ()
+2024-10-21 17:25:33,404 - INFO - show standard_conforming_strings
+2024-10-21 17:25:33,404 - INFO - [raw sql] ()
+2024-10-21 17:25:33,404 - INFO - BEGIN (implicit)
+2024-10-21 17:25:33,409 - INFO - SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books
+2024-10-21 17:25:33,414 - INFO - [generated in 0.00196s] ()
+2024-10-21 17:25:33,414 - INFO - BEGIN (implicit)
+2024-10-21 17:25:33,414 - INFO - SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books
+2024-10-21 17:25:33,414 - INFO - [cached since 0.009756s ago] ()
+2024-10-21 17:25:33,423 - ERROR - Error fetching books: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 510, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 756, in _prepare
+    prepared_stmt = await self._connection.prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 635, in prepare
+    return await self._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 653, in _prepare
+    stmt = await self._get_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 432, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\\protocol\\protocol.pyx", line 165, in prepare
+asyncpg.exceptions.UndefinedColumnError: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 133, in get_books
+    result = await db.execute(select(BookModel))
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 461, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-10-21 17:25:33,450 - INFO - ROLLBACK
+2024-10-21 17:25:33,451 - ERROR - Error fetching books: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 510, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 756, in _prepare
+    prepared_stmt = await self._connection.prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 635, in prepare
+    return await self._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 653, in _prepare
+    stmt = await self._get_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 432, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\\protocol\\protocol.pyx", line 165, in prepare
+asyncpg.exceptions.UndefinedColumnError: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 133, in get_books
+    result = await db.execute(select(BookModel))
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 461, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-10-21 17:25:33,461 - INFO - ROLLBACK
+2024-10-21 17:25:39,539 - INFO - BEGIN (implicit)
+2024-10-21 17:25:39,544 - INFO - SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books
+2024-10-21 17:25:39,545 - INFO - [cached since 6.133s ago] ()
+2024-10-21 17:25:39,545 - ERROR - Error fetching books: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 510, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 756, in _prepare
+    prepared_stmt = await self._connection.prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 635, in prepare
+    return await self._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 653, in _prepare
+    stmt = await self._get_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 432, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\\protocol\\protocol.pyx", line 165, in prepare
+asyncpg.exceptions.UndefinedColumnError: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 133, in get_books
+    result = await db.execute(select(BookModel))
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 461, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id, books.title, books.author, books.published_date, books.genre 
+FROM books]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-10-21 17:25:39,564 - INFO - ROLLBACK
+2024-10-21 17:26:00,031 - INFO - BEGIN (implicit)
+2024-10-21 17:26:00,040 - INFO - SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.published_date AS books_published_date, books.genre AS books_genre 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:26:00,044 - INFO - [generated in 0.00206s] (4,)
+2024-10-21 17:26:00,048 - ERROR - Error adding review: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.published_date AS books_published_date, books.genre AS books_genre 
+FROM books 
+WHERE books.id = $1::INTEGER]
+[parameters: (4,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 510, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 756, in _prepare
+    prepared_stmt = await self._connection.prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 635, in prepare
+    return await self._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 653, in _prepare
+    stmt = await self._get_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 432, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\\protocol\\protocol.pyx", line 165, in prepare
+asyncpg.exceptions.UndefinedColumnError: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 190, in add_review
+    book = await db.get(BookModel, int(id))
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 604, in get
+    return await greenlet_spawn(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 3693, in get
+    return self._get_impl(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 3873, in _get_impl
+    return db_load_fn(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedColumnError'>: column books.published_date does not exist
+[SQL: SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.published_date AS books_published_date, books.genre AS books_genre 
+FROM books 
+WHERE books.id = $1::INTEGER]
+[parameters: (4,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-10-21 17:26:00,066 - INFO - ROLLBACK
+2024-10-21 17:27:47,753 - ERROR - Error occurred while creating a book: 'year_published' is an invalid keyword argument for BookModel
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 119, in create_book
+    db_book = BookModel(title=book.title, author=book.author, genre=book.genre, year_published=book.year_published, summary=book.summary)
+  File "<string>", line 4, in __init__
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state.py", line 572, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+TypeError: 'year_published' is an invalid keyword argument for BookModel
+2024-10-21 17:28:31,684 - ERROR - Error occurred while creating a book: 'year_published' is an invalid keyword argument for BookModel
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 119, in create_book
+    db_book = BookModel(title=book.title, author=book.author, genre=book.genre, year_published=book.year_published, summary=book.summary)
+  File "<string>", line 4, in __init__
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state.py", line 572, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+TypeError: 'year_published' is an invalid keyword argument for BookModel
+2024-10-21 17:29:12,026 - ERROR - Error occurred while creating a book: 'summary' is an invalid keyword argument for BookModel
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 119, in create_book
+    db_book = BookModel(title=book.title, author=book.author, genre=book.genre, year_published=book.year_published, summary=book.summary)
+  File "<string>", line 4, in __init__
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state.py", line 572, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+TypeError: 'summary' is an invalid keyword argument for BookModel
+2024-10-21 17:30:02,252 - INFO - select pg_catalog.version()
+2024-10-21 17:30:02,258 - INFO - [raw sql] ()
+2024-10-21 17:30:02,258 - INFO - select current_schema()
+2024-10-21 17:30:02,258 - INFO - [raw sql] ()
+2024-10-21 17:30:02,258 - INFO - show standard_conforming_strings
+2024-10-21 17:30:02,258 - INFO - [raw sql] ()
+2024-10-21 17:30:02,266 - INFO - BEGIN (implicit)
+2024-10-21 17:30:02,266 - INFO - INSERT INTO books (title, author, year_published, genre, summary) VALUES ($1::VARCHAR, $2::VARCHAR, $3::INTEGER, $4::VARCHAR, $5::VARCHAR) RETURNING books.id
+2024-10-21 17:30:02,274 - INFO - [generated in 0.00197s] ('Justice League', 'JK Rolling', 1951, 'Fiction', 'A comic book story')
+2024-10-21 17:30:02,280 - INFO - COMMIT
+2024-10-21 17:30:02,282 - INFO - BEGIN (implicit)
+2024-10-21 17:30:02,290 - INFO - SELECT books.id, books.title, books.author, books.year_published, books.genre, books.summary 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:30:02,293 - INFO - [generated in 0.00241s] (9,)
+2024-10-21 17:30:02,299 - INFO - ROLLBACK
+2024-10-21 17:30:11,193 - INFO - BEGIN (implicit)
+2024-10-21 17:30:11,193 - INFO - SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.year_published AS books_year_published, books.genre AS books_genre, books.summary AS books_summary 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:30:11,193 - INFO - [generated in 0.00173s] (4,)
+2024-10-21 17:30:11,200 - INFO - INSERT INTO book_reviews (book_id, user_id, review_text, rating) VALUES ($1::INTEGER, $2::INTEGER, $3::VARCHAR, $4::INTEGER) RETURNING book_reviews.id
+2024-10-21 17:30:11,200 - INFO - [generated in 0.00101s] ('4', 123, 'This book is better than the other books what I have read', 4)
+2024-10-21 17:30:11,200 - INFO - ROLLBACK
+2024-10-21 17:30:11,200 - ERROR - Error adding review: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $1: '4' (an integer is required (got type str))
+[SQL: INSERT INTO book_reviews (book_id, user_id, review_text, rating) VALUES ($1::INTEGER, $2::INTEGER, $3::VARCHAR, $4::INTEGER) RETURNING book_reviews.id]
+[parameters: ('4', 123, 'This book is better than the other books what I have read', 4)]
+(Background on this error at: https://sqlalche.me/e/20/dbapi)
+Traceback (most recent call last):
+  File "asyncpg\\protocol\\prepared_stmt.pyx", line 175, in asyncpg.protocol.protocol.PreparedStatementState._encode_bind_msg
+  File "asyncpg\\protocol\\codecs/base.pyx", line 227, in asyncpg.protocol.protocol.Codec.encode
+  File "asyncpg\\protocol\\codecs/base.pyx", line 129, in asyncpg.protocol.protocol.Codec.encode_scalar
+  File "asyncpg\\pgproto\\./codecs/int.pyx", line 54, in asyncpg.pgproto.pgproto.int4_encode
+TypeError: an integer is required (got type str)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 534, in _prepare_and_execute
+    self._rows = deque(await prepared_stmt.fetch(*parameters))
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\prepared_stmt.py", line 176, in fetch
+    data = await self.__bind_execute(args, 0, timeout)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\prepared_stmt.py", line 267, in __bind_execute
+    data, status, _ = await self.__do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\prepared_stmt.py", line 256, in __do_execute
+    return await executor(protocol)
+  File "asyncpg\\protocol\\protocol.pyx", line 185, in bind_execute
+  File "asyncpg\\protocol\\prepared_stmt.pyx", line 204, in asyncpg.protocol.protocol.PreparedStatementState._encode_bind_msg
+asyncpg.exceptions.DataError: invalid input for query argument $1: '4' (an integer is required (got type str))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.Error: <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $1: '4' (an integer is required (got type str))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 196, in add_review
+    await db.commit()
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 1009, in commit
+    await greenlet_spawn(self.sync_session.commit)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2028, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 4352, in flush
+    self._flush(objects)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 4488, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 4448, in _flush
+    flush_context.execute()
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.DBAPIError: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $1: '4' (an integer is required (got type str))
+[SQL: INSERT INTO book_reviews (book_id, user_id, review_text, rating) VALUES ($1::INTEGER, $2::INTEGER, $3::VARCHAR, $4::INTEGER) RETURNING book_reviews.id]
+[parameters: ('4', 123, 'This book is better than the other books what I have read', 4)]
+(Background on this error at: https://sqlalche.me/e/20/dbapi)
+2024-10-21 17:31:55,960 - INFO - select pg_catalog.version()
+2024-10-21 17:31:55,960 - INFO - [raw sql] ()
+2024-10-21 17:31:55,968 - INFO - select current_schema()
+2024-10-21 17:31:55,968 - INFO - [raw sql] ()
+2024-10-21 17:31:55,968 - INFO - show standard_conforming_strings
+2024-10-21 17:31:55,968 - INFO - [raw sql] ()
+2024-10-21 17:31:55,975 - INFO - BEGIN (implicit)
+2024-10-21 17:31:55,984 - INFO - SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.year_published AS books_year_published, books.genre AS books_genre, books.summary AS books_summary 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:31:55,985 - INFO - [generated in 0.00161s] (4,)
+2024-10-21 17:31:55,992 - INFO - INSERT INTO book_reviews (book_id, user_id, review_text, rating) VALUES ($1::INTEGER, $2::INTEGER, $3::VARCHAR, $4::INTEGER) RETURNING book_reviews.id
+2024-10-21 17:31:55,994 - INFO - [generated in 0.00194s] (4, 123, 'This book is better than the other books what I have read', 4)
+2024-10-21 17:31:56,000 - INFO - COMMIT
+2024-10-21 17:31:56,000 - INFO - BEGIN (implicit)
+2024-10-21 17:31:56,008 - INFO - SELECT book_reviews.id, book_reviews.book_id, book_reviews.user_id, book_reviews.review_text, book_reviews.rating 
+FROM book_reviews 
+WHERE book_reviews.id = $1::INTEGER
+2024-10-21 17:31:56,011 - INFO - [generated in 0.00176s] (14,)
+2024-10-21 17:31:56,017 - INFO - ROLLBACK
+2024-10-21 17:32:35,264 - INFO - BEGIN (implicit)
+2024-10-21 17:32:35,272 - INFO - SELECT book_reviews.id, book_reviews.book_id, book_reviews.user_id, book_reviews.review_text, book_reviews.rating 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::VARCHAR
+2024-10-21 17:32:35,275 - INFO - [generated in 0.00212s] ('1',)
+2024-10-21 17:32:35,275 - ERROR - Error fetching reviews: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT book_reviews.id, book_reviews.book_id, book_reviews.user_id, book_reviews.review_text, book_reviews.rating 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::VARCHAR]
+[parameters: ('1',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 510, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 756, in _prepare
+    prepared_stmt = await self._connection.prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 635, in prepare
+    return await self._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 653, in _prepare
+    stmt = await self._get_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 432, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\\protocol\\protocol.pyx", line 165, in prepare
+asyncpg.exceptions.UndefinedFunctionError: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 210, in get_reviews
+    reviews = await db.execute(select(ReviewModel).filter_by(book_id=id))
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 461, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT book_reviews.id, book_reviews.book_id, book_reviews.user_id, book_reviews.review_text, book_reviews.rating 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::VARCHAR]
+[parameters: ('1',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-10-21 17:32:35,312 - INFO - ROLLBACK
+2024-10-21 17:34:48,769 - INFO - BEGIN (implicit)
+2024-10-21 17:34:48,769 - INFO - SELECT books.id, books.title, books.author, books.year_published, books.genre, books.summary 
+FROM books
+2024-10-21 17:34:48,769 - INFO - [generated in 0.00128s] ()
+2024-10-21 17:34:48,774 - INFO - ROLLBACK
+2024-10-21 17:35:37,310 - INFO - select pg_catalog.version()
+2024-10-21 17:35:37,310 - INFO - [raw sql] ()
+2024-10-21 17:35:37,317 - INFO - select current_schema()
+2024-10-21 17:35:37,320 - INFO - [raw sql] ()
+2024-10-21 17:35:37,320 - INFO - show standard_conforming_strings
+2024-10-21 17:35:37,320 - INFO - [raw sql] ()
+2024-10-21 17:35:37,326 - INFO - BEGIN (implicit)
+2024-10-21 17:35:37,336 - INFO - SELECT book_reviews.id, book_reviews.book_id, book_reviews.user_id, book_reviews.review_text, book_reviews.rating 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::INTEGER
+2024-10-21 17:35:37,336 - INFO - [generated in 0.00257s] (1,)
+2024-10-21 17:35:37,346 - INFO - ROLLBACK
+2024-10-21 17:36:28,955 - INFO - select pg_catalog.version()
+2024-10-21 17:36:28,955 - INFO - [raw sql] ()
+2024-10-21 17:36:28,962 - INFO - select current_schema()
+2024-10-21 17:36:28,962 - INFO - [raw sql] ()
+2024-10-21 17:36:28,970 - INFO - show standard_conforming_strings
+2024-10-21 17:36:28,970 - INFO - [raw sql] ()
+2024-10-21 17:36:28,970 - INFO - BEGIN (implicit)
+2024-10-21 17:36:28,987 - INFO - SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.year_published AS books_year_published, books.genre AS books_genre, books.summary AS books_summary 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:36:28,987 - INFO - [generated in 0.00324s] (1,)
+2024-10-21 17:36:28,995 - INFO - SELECT avg(book_reviews.rating) AS avg_1 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::VARCHAR
+2024-10-21 17:36:29,003 - INFO - [generated in 0.00198s] ('1',)
+2024-10-21 17:36:29,006 - ERROR - Error fetching summary: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT avg(book_reviews.rating) AS avg_1 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::VARCHAR]
+[parameters: ('1',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 510, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 756, in _prepare
+    prepared_stmt = await self._connection.prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 635, in prepare
+    return await self._prepare(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 653, in _prepare
+    stmt = await self._get_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\asyncpg\connection.py", line 432, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg\\protocol\\protocol.pyx", line 165, in prepare
+asyncpg.exceptions.UndefinedFunctionError: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tdce1\OneDrive\Desktop\RAVI\Book-And-Recommendation-system\dummy.py", line 230, in get_average_rating_review
+    avg_rating = await db.execute(select(func.avg(ReviewModel.rating)).filter_by(book_id=id))
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 461, in execute
+    result = await greenlet_spawn(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 568, in execute
+    self._adapt_connection.await_(
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 546, in _prepare_and_execute
+    self._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 497, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "C:\Users\tdce1\anaconda3\envs\jkenv\lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 780, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT avg(book_reviews.rating) AS avg_1 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::VARCHAR]
+[parameters: ('1',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-10-21 17:36:29,044 - INFO - ROLLBACK
+2024-10-21 17:37:35,864 - INFO - select pg_catalog.version()
+2024-10-21 17:37:35,864 - INFO - [raw sql] ()
+2024-10-21 17:37:35,872 - INFO - select current_schema()
+2024-10-21 17:37:35,873 - INFO - [raw sql] ()
+2024-10-21 17:37:35,875 - INFO - show standard_conforming_strings
+2024-10-21 17:37:35,875 - INFO - [raw sql] ()
+2024-10-21 17:37:35,881 - INFO - BEGIN (implicit)
+2024-10-21 17:37:35,881 - INFO - SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.year_published AS books_year_published, books.genre AS books_genre, books.summary AS books_summary 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:37:35,889 - INFO - [generated in 0.00196s] (1,)
+2024-10-21 17:37:35,898 - INFO - SELECT avg(book_reviews.rating) AS avg_1 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::INTEGER
+2024-10-21 17:37:35,898 - INFO - [generated in 0.00253s] (1,)
+2024-10-21 17:37:35,910 - INFO - SELECT book_reviews.review_text 
+FROM book_reviews 
+WHERE book_reviews.book_id = $1::INTEGER
+2024-10-21 17:37:35,914 - INFO - [generated in 0.00293s] (1,)
+2024-10-21 17:37:35,914 - INFO - Invoking model for summary and review...
+2024-10-21 17:38:00,962 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2024-10-21 17:38:11,943 - INFO - Time taken for model inference: 36.0287 seconds
+2024-10-21 17:38:11,946 - INFO - ROLLBACK
+2024-10-21 17:39:55,250 - INFO - Invoking model for summary and review...
+2024-10-21 17:40:03,683 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2024-10-21 17:40:40,903 - INFO - Time taken for model inference: 45.6528 seconds
+2024-10-21 17:41:07,428 - INFO - select pg_catalog.version()
+2024-10-21 17:41:07,428 - INFO - [raw sql] ()
+2024-10-21 17:41:07,436 - INFO - select current_schema()
+2024-10-21 17:41:07,438 - INFO - [raw sql] ()
+2024-10-21 17:41:07,438 - INFO - show standard_conforming_strings
+2024-10-21 17:41:07,438 - INFO - [raw sql] ()
+2024-10-21 17:41:07,448 - INFO - BEGIN (implicit)
+2024-10-21 17:41:07,461 - INFO - SELECT book_reviews.id, book_reviews.book_id, book_reviews.user_id, book_reviews.review_text, book_reviews.rating 
+FROM book_reviews 
+WHERE book_reviews.user_id = $1::INTEGER
+2024-10-21 17:41:07,461 - INFO - [generated in 0.00202s] (123,)
+2024-10-21 17:41:07,469 - INFO - SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.year_published AS books_year_published, books.genre AS books_genre, books.summary AS books_summary 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:41:07,477 - INFO - [generated in 0.00269s] (1,)
+2024-10-21 17:41:07,477 - INFO - SELECT books.id AS books_id, books.title AS books_title, books.author AS books_author, books.year_published AS books_year_published, books.genre AS books_genre, books.summary AS books_summary 
+FROM books 
+WHERE books.id = $1::INTEGER
+2024-10-21 17:41:07,485 - INFO - [cached since 0.01106s ago] (4,)
+2024-10-21 17:41:07,485 - INFO - Invoking model for summary and review...
+2024-10-21 17:41:14,699 - INFO - HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2024-10-21 17:41:36,270 - INFO - Time taken for model inference: 28.7844 seconds
+2024-10-21 17:41:36,271 - INFO - ROLLBACK

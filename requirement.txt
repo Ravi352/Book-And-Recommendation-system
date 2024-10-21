@@ -6,3 +6,5 @@ langchain
 langchain-ollama
 streamlit
 langchain_experimental
+sqlalchemy[asyncio]
+asyncpg
