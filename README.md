@@ -14,7 +14,7 @@ Table of Contents
 * Contributing
 * License
 
-*** Overview *** 
+*** Overview ***
 This intelligent book management system is built using Python, a locally running Llama3 generative AI model, and cloud infrastructure. The system enables users to manage a library of books, generate summaries, and receive recommendations based on user preferences.
 
 *** Features ***
@@ -24,4 +24,5 @@ This intelligent book management system is built using Python, a locally running
 * Book Recommendations: Receive personalized book recommendations.
 * RESTful API: Access the system functionalities via a well-defined API.
 * Asynchronous Operations: Efficiently handle database interactions and model predictions.
+
 
