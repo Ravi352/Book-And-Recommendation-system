@@ -43,7 +43,7 @@ body:  {
 
 
 ## RESTful API and Asynchronous Programming
-APIs.py file created to interact with model and contains all the APIs which is used to interact with the database (postgresql). The operations and the methods are mentioned below. for local instance the initial endpoints would be "http://127.0.0.1:8000/{Variable}". Variable is the endpoint(e.g.  /books, /books/<id>) the values as given below with the respective method and inputs (JSON body) to check the APIs are given below: 
+APIs.py file created to interact with model and contains all the APIs which is used to interact with the database (postgresql). The operations and the methods are mentioned below. for local instance the initial endpoints would be "http://127.0.0.1:8000/{Variable}". Variable is the endpoint(e.g.  /books, /books/id) the values as given below with the respective method and inputs (JSON body) to check the APIs are given below: 
 
 #### POST /books: Add a new book.
 body : {
